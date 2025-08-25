@@ -54,7 +54,7 @@ int reajust_nodes(processs_thread thr) {
     }
   }
 
-  if (p_stack == 3) __asm__("movq %%thr->p_thread->next_node%% %%MEMORY%% : m (thr, MEMORY) : v(thr, MEMORY)");
+  if (p_stack == 3) __asm__("movq %%thr->p_thread->next_node%% %%MEMORY%% : m (thr, MEMORY) : v(thr, MEMORY")");
   return 1;
 }
 
