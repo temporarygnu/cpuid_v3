@@ -59,7 +59,7 @@ int reajust_nodes(processs_thread thr) {
 }
 
 main(int argv, char **argc[]){
-  __asn__("movq %%Nnodes%% %%MEMORY%%");
+  __asn__("movq %%nodes%% %%MEMORY%% : m("nodes, MEMORY" : v("nodes, MEMORY)");
   
   __asm__("
 	   push eax;
