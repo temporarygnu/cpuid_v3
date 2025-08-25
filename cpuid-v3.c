@@ -21,7 +21,7 @@ struct process_thread {
   struct process p_thread;
 };
 
-int jumper_extratect_from_hex(char hex[]) {
+int jumper_extract_from_hex(char hex[]) {
   int stack[1];
   int n = 0;
 	
