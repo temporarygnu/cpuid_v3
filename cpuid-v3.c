@@ -54,7 +54,7 @@ int reajust_nodes(processs_thread thr) {
     }
   }
 
-  if (p_stack == 3) __asm__("movl %%thr->p_thread->next_node%% %%MEMORY%% : m (thr, MEMORY) : v(thr, MEMORY)");
+  if (p_stack == 3) __asm__("movq %%thr->p_thread->next_node%% %%MEMORY%% : m (thr, MEMORY) : v(thr, MEMORY)");
   return 1;
 }
 
@@ -69,7 +69,7 @@ main(int argv, char **argc[]){
   .begin:
 	   add 0 edx;
 	   db 000000
-	   call jumpter_extract_from_hex;
+	   call jumper_extract_from_hex;
 	   db eax;
 	   call jumper_extract_from_hex;
 	   add ebx;
