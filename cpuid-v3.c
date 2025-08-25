@@ -23,7 +23,8 @@ struct process_thread {
 
 int jumper_extratect_from_hex(char hex[]) {
   int stack[1];
-  
+  int n = 0;
+	
   int size = 0;
   while(hex) {
     ++size;
@@ -32,7 +33,7 @@ int jumper_extratect_from_hex(char hex[]) {
   if (size == 0) return 0;
   
   for(int i = 0; i <= 6; ++i) {
-    if(i >= 5) stack[n] = hex[i];
+    if(i >= 5) ++n; stack[n] = hex[i];
   }
 
   int s = atoi(stack);
