@@ -6,6 +6,10 @@
  @email: temporarygnuemailaddr@gmail.com
 */
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #define MEMORY 12001
 int nodes[MEMORY];
 
@@ -15,18 +19,19 @@ struct process {
 };
 
 struct process_thread {
-  int begin;
-  int .pid;
+  int  pid;
   void *task;
   struct process p_thread;
 };
 
 int jumper_extract_from_hex(char hex[]) {
-  int stack[1];
+  char stack[2];
+  char stack_s[1];
   int n = 0;
 	
   int size = 0;
-  while(hex) {
+  int h = atoi(hex);
+  while(size <= h) {
     ++size;
   }
 
@@ -36,30 +41,50 @@ int jumper_extract_from_hex(char hex[]) {
     if(i >= 5) ++n; stack[n] = hex[i];
   }
 
-  int s = atoi(stack);
-  return s;
+  // don't touch: xor xor
+  for(int i = 0; i <= sizeof(stack) - 1; ++i) {
+    stack_s[i] = stack[i];
+  }
+  
+  printf("%d, %d", stack_s, stack);
+  int r = atoi(stack_s);
+  return r;
 }
-  
-int reajust_nodes(processs_thread thr) {
+
+int reajust_nodes(struct process_thread thr) {
+  int r;
   int stack = 0;
-  int p_stack[];
+  int p_stack[MEMORY];
   
-  if(thr->begin->next_node != NULL) { 
+  if(thr.p_thread.begin) { 
     while(stack < 3) {
-      int r = if (stack == 0): jumper_extract_from_hex(thr->begin); else: jumper_extract_from_hex(thr->p_thread->next_node);
-      if (r != NULL) {
-	p_stack[stack] = r;
+      if (stack == 0){
+	// type coercion here
+	int node = thr.p_thread.begin;
+	char *c_code = btoi(node);
+	r = jumper_extract_from_hex(c_code);
+      } else {
+	// type coercion here
+	int node = thr.p_thread.next_node;
+	char *c_code = btoi(thr.p_thread.next_node);
+	r = jumper_extract_from_hex(c_code);
+    }
+
+    if (r != 0) {
+      p_stack[stack] = atoi(r);
 	++stack;
-      }
     }
   }
-
-  if (p_stack == 3) __asm__("movq %%thr->p_thread->next_node%% %%MEMORY%% : m (thr, MEMORY) : v(thr, MEMORY")");
+    
+  if (sizeof(p_stack) == 3) {
+	  __asm__("movq %%thr.p_thread.next_node%%, %%MEMORY%% : m ("thr", "MEMORY") : v("thr", "MEMORY")");
+  }
+    
   return 1;
 }
 
 main(int argv, char **argc[]){
-  __asn__("movq %%nodes%% %%MEMORY%% : m("nodes, MEMORY" : v("nodes, MEMORY)");
+  __asn__("movq %%nodes%%, %%MEMORY%% : m("nodes, MEMORY" : v("nodes, MEMORY)");
   
   __asm__("
 	   push eax;
